@@ -1,6 +1,5 @@
 # Course Project
-## Getting and Cleaning Data
-[link to course](https://class.coursera.org/getdata-010)
+For [Getting and Cleaning Data](https://class.coursera.org/getdata-010) course in Coursera
 
 ## Files in the repo
 
@@ -14,7 +13,7 @@
 
 In order to succesfully generate `output.txt` you need:
 
-- an updated version of R or R-Studio
+- a current version of R or R-Studio (tested with **R version 3.1.2 (2014-10-31) -- "Pumpkin Helmet"**, no reason it shouldn't work on earlier versions)
 - the input files as downloaded from the [course site](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip), and uncompressed in a working folder
 - set the R working directory to the folder that contains the uncompressed archive `setwd('<your working dir here>/UCI_HAR_Dataset')`
 
@@ -28,4 +27,4 @@ Simply source the script file and execute the function run_analysis() function
 
 ### Output content
 
-See CodeBook.md file for an explanation of observations and variables
+See [CodeBook.md](CodeBook.md) file for an explanation of observations and variables
