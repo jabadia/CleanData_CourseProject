@@ -19,11 +19,25 @@ In order to succesfully generate `output.txt` you need:
 
 ### Running the script
 
-Simply source the script file and execute the function run_analysis() function
+Simply source the script file and execute the `run_analysis()` function
 
 	source('<path-to-script>/run_analysis.R')
 	setwd('<your working dir here>/UCI_HAR_Dataset')	
-	run_analysis()
+	data <- run_analysis()
+
+You can specify two optional parameters to `run_analysis()`
+
+- `nrows`: will limit input read to the specified number of rows in each read file. It is useful while testing the function with smaller subsets of data for faster execution time. If you don't specify this parameter, the function will read all rows
+- `output.name`: name of file to write the summary table to. Defaults to `output.txt`
+
+### Return Value
+
+The `run_analysis()` returns a list with two values:
+
+- `data`: contains the tidy data: one row for each observation, and one column for each variable. See [CodeBook.md](CodeBook.md) file for an explanation of observations and variables
+- `summary`: contains the summarized data set (mean of each column grouped by activity)
+
+It also writes an `output.txt` file described below
 
 ### Output content
 
