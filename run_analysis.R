@@ -15,9 +15,11 @@ run_analysis <- function(nrows=-1,output.name='output.txt')
 	message('reading test data')
 	read.table('test/X_test.txt', nrows=nrows) -> X_test
 	read.table('test/y_test.txt', nrows=nrows) -> y_test
+	read.table('test/subject_test.txt', nrows=nrows, col.names="subject") -> subject_test
 	message('reading train data')
 	read.table('train/X_train.txt', nrows=nrows) -> X_train
 	read.table('train/y_train.txt', nrows=nrows) -> y_train
+	read.table('train/subject_train.txt', nrows=nrows, col.names="subject") -> subject_train
 
 	message('read ', dim(X_test)[1],' observations from test data')
 	message('read ', dim(X_train)[1],' observations from train data')
@@ -28,6 +30,7 @@ run_analysis <- function(nrows=-1,output.name='output.txt')
 	# stitch test + train data
 	X_data <- rbind(X_test,X_train)	
 	y_data <- rbind(y_test,y_train)
+	subject_data <- rbind(subject_test,subject_train)
 
 	# select only relevant columns in X_data
 	names(X_data) <- features$name
@@ -38,11 +41,11 @@ run_analysis <- function(nrows=-1,output.name='output.txt')
 	y_data$activity.label <- activity.labels[ y_data$activity, 'label']
 
 	# stitch X+y
-	data <- cbind(y_data,X_data)
+	data <- cbind(y_data,X_data,subject_data)
 
 	# summarize 
 	message('summarizing (mean) by activity')
-	summary <- aggregate(data[,-1],by=list(Activity = data$activity.label), FUN=mean)
+	summary <- aggregate(data[,-1],by=list(Activity = data$activity.label, Subject = data$subject), FUN=mean)
 
 	# write tidy summary dataset
 	message('write table into output.txt')
