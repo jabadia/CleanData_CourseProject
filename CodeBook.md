@@ -18,11 +18,12 @@ When running the `run_analysis()` function, we do the follwing steps:
 
 1. We read the reference files into data.frames: `features.txt` and `activity_labels.txt`
 2. We read actual data from the four interesting files: `test/X_test.txt`, `test/y_test.txt`, `train/X_train.txt` and `train/y_train.txt`.
-3. We stitch together test and train datasets into X_data and y_data using `rbind()`
-4. We select relevant columns from the X_data dataset, by looking at which column names contain the substring `mean()` or `std()`, using `grep()` function
-5. We replace activity integers by their actual labels (as a Factor)
-6. We stitch together X and y datasets using `cbind()`
-7. We, finally, compute the summary of the resulting dataset using `aggregate()`
+3. We read subject data from `test/subject_test.txt` and `train/subject_train.txt`
+4. We stitch together test and train datasets into X_data and y_data using `rbind()`
+5. We select relevant columns from the X_data dataset, by looking at which column names contain the substring `mean()` or `std()`, using `grep()` function
+6. We replace activity integers by their actual labels (as a Factor)
+7. We stitch together X, y and subject datasets using `cbind()`
+8. We, finally, compute the summary of the resulting dataset using `aggregate()`
 
 ## Outputs
 
@@ -34,7 +35,7 @@ In the `data` dataset, there is:
 - 66 columns with the feature variable values, selected from the complete input dataset. Only those columns whose name contains `mean()` or `std()` are retained
 
 In the `summary` dataset (and also in the `output.txt` file), there is:
-- 1 row for each of the 6 activity types
+- 1 row for each of the 6*30 activity*subject combinations 
 - 1 column with the activity label (first column)
 - 66 columns with the mean value of all variables for all observations of that activity type
 
